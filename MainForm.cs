@@ -60,8 +60,9 @@ public partial class MainForm : Form
                 return;
             }
 
-            //try {
-            var config = new ConfigurationBuilder()
+            try
+            {
+                var config = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("AppSettings.json", optional: true, reloadOnChange: true)
                 /*.AddUserSecrets<ClientSecretCredential>()*/ // Uncomment if using user secrets
@@ -106,13 +107,13 @@ public partial class MainForm : Form
                 }
 
                 emailsDataGridView.DataSource = table;
-            //}
+            }
 
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error", "001", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error", "001", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
